@@ -22,28 +22,24 @@
  * SOFTWARE.
  */
 
-import { ConfigurationBinder as cfgBinder } from "@scm-manager/ui-components";
-import GlobalSignatureConfigForm from "./GlobalSignatureConfigForm";
-import RepoSignatureConfigForm from "./RepoSignatureConfigForm";
-import NamespaceSignatureConfigForm from "./NamespaceSignatureConfigForm";
+export type VerificationType = "ANY_SIGNATURE" | "SCM_USER_SIGNATURE";
+export const VERIFICATION_TYPES: VerificationType[] = ["ANY_SIGNATURE", "SCM_USER_SIGNATURE"];
 
-cfgBinder.bindGlobal(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "globalSignatureConfig",
-  GlobalSignatureConfigForm
-);
+export type BaseSignatureConfigDto = {
+  enabled: boolean;
+  protectedBranches: string[];
+  verificationType: VerificationType;
+};
 
-cfgBinder.bindRepositorySetting(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "repoSignatureConfig",
-  RepoSignatureConfigForm
-);
+export type GlobalSignatureConfigDto = BaseSignatureConfigDto & {
+  childrenConfigDisabled: boolean;
+};
 
-cfgBinder.bindNamespaceSetting(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "namespaceSignatureConfig",
-  NamespaceSignatureConfigForm
-);
+export type NamespaceSignatureConfigDto = BaseSignatureConfigDto & {
+  childrenConfigDisabled: boolean;
+  overwriteParentConfig: boolean;
+};
+
+export type RepositorySignatureConfigDto = BaseSignatureConfigDto & {
+  overwriteParentConfig: boolean;
+};

@@ -22,10 +22,18 @@
  * SOFTWARE.
  */
 
-package com.cloudogu.scm.signature.check;
+package com.cloudogu.scm.signature.check.config;
 
-import static org.junit.jupiter.api.Assertions.*;
+import lombok.Data;
 
-class SampleResourceTest {
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@Data
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "namespace-signature-check-config")
+public class GlobalSignatureConfig extends BaseSignatureConfig implements WithDisableOption {
+
+  private boolean childrenConfigDisabled = false;
 }

@@ -22,28 +22,24 @@
  * SOFTWARE.
  */
 
-import { ConfigurationBinder as cfgBinder } from "@scm-manager/ui-components";
-import GlobalSignatureConfigForm from "./GlobalSignatureConfigForm";
-import RepoSignatureConfigForm from "./RepoSignatureConfigForm";
-import NamespaceSignatureConfigForm from "./NamespaceSignatureConfigForm";
+package com.cloudogu.scm.signature.check;
 
-cfgBinder.bindGlobal(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "globalSignatureConfig",
-  GlobalSignatureConfigForm
-);
+import sonia.scm.ExceptionWithContext;
+import sonia.scm.repository.Changeset;
+import sonia.scm.repository.Repository;
 
-cfgBinder.bindRepositorySetting(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "repoSignatureConfig",
-  RepoSignatureConfigForm
-);
+import static sonia.scm.ContextEntry.ContextBuilder.entity;
 
-cfgBinder.bindNamespaceSetting(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "namespaceSignatureConfig",
-  NamespaceSignatureConfigForm
-);
+public class InvalidSignatureException extends ExceptionWithContext {
+
+  private static final String CODE = "DDTuAVZpr1";
+
+  InvalidSignatureException(Repository repository, Changeset c, String message) {
+    super(entity("Changeset", c.getId()).in(repository).build(), message);
+  }
+
+  @Override
+  public String getCode() {
+    return CODE;
+  }
+}

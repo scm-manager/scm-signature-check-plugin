@@ -22,28 +22,19 @@
  * SOFTWARE.
  */
 
-import { ConfigurationBinder as cfgBinder } from "@scm-manager/ui-components";
-import GlobalSignatureConfigForm from "./GlobalSignatureConfigForm";
-import RepoSignatureConfigForm from "./RepoSignatureConfigForm";
-import NamespaceSignatureConfigForm from "./NamespaceSignatureConfigForm";
+package com.cloudogu.scm.signature.check.config;
 
-cfgBinder.bindGlobal(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "globalSignatureConfig",
-  GlobalSignatureConfigForm
-);
+import lombok.Data;
 
-cfgBinder.bindRepositorySetting(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "repoSignatureConfig",
-  RepoSignatureConfigForm
-);
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
-cfgBinder.bindNamespaceSetting(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "namespaceSignatureConfig",
-  NamespaceSignatureConfigForm
-);
+@Data
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "namespace-signature-check-config")
+public class NamespaceSignatureConfig extends BaseSignatureConfig implements WithDisableOption, WithOverwriteOption {
+
+  private boolean childrenConfigDisabled = false;
+  private boolean overwriteParentConfig = false;
+}

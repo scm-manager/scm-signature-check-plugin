@@ -22,10 +22,19 @@
  * SOFTWARE.
  */
 
-describe("frontend unit tests", () => {
+package com.cloudogu.scm.signature.check.config;
 
-  it("some test", () => {
-    expect( 21 * 2 ).toBe(42);
-  });
 
-});
+import lombok.Data;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@Data
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "repo-signature-check-config")
+public class RepositorySignatureConfig extends BaseSignatureConfig implements WithOverwriteOption {
+
+  private boolean overwriteParentConfig = false;
+}

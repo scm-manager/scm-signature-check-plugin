@@ -1,5 +1,52 @@
 {
   "scm-signature-check-plugin": {
-
+    "config": {
+      "menuTitle": "Signaturprüfung",
+      "disableNamespaceAndRepoConfig": "Namespace und Repository Einstellungen deaktivieren",
+      "disableRepoConfig": "Repository Einstellungen deaktivieren",
+      "overwriteGlobalConfig": "Globalle Einstellungen überschreiben",
+      "overwriteNamespaceAndGlobalConfig": "Namespace und globalle Einstellungen überschreiben",
+      "enabled": {
+        "label": "Signaturprüfung aktivieren"
+      },
+      "protectedBranches": {
+        "label": "Geschützte Branches",
+        "helpText": "Alle Commits, welche auf diese Branches gepushed werden, werden auf eine gültige Signatur überprüft. Ist diese Liste leer, dann werden die Signaturen für jeden Branch geprüft.",
+        "add": "Hinzufügen"
+      },
+      "verificationType": {
+        "label": "GPG Verifizierung",
+        "helpText": "Unterschiedliche Arten von Signaturen die erlaubt werden sollen. Es werden entweder alle Signature erlaubt, nur Signaturen die von SCM-Manager Usern stammen oder Signaturen die zu einer Liste von angegebenen GPG Schlüsseln passt.",
+        "radio": {
+          "ANY_SIGNATURE": "Beliebige Signatur",
+          "SCM_USER_SIGNATURE": "Signatur eines SCM-Manager Users"
+        }
+      },
+      "displayName": {
+        "label": "Anzeigename",
+        "helpText": "Anzeigename des GPG Schlüssels"
+      },
+      "raw": {
+        "label": "Schlüssel",
+        "helpText": "Der öffentliche GPG Schlüssel"
+      },
+      "keysSubtitle": "Liste der zugelassenen GPG Schlüssel"
+    }
+  },
+  "permissions": {
+    "configuration": {
+      "signatureCheck": {
+        "displayName": "Signaturprüfung konfigurieren",
+        "description": "Darf die globale Signaturprüfung konfigurieren"
+      }
+    }
+  },
+  "verbs": {
+    "repository": {
+      "signatureCheck": {
+        "displayName": "Signaturprüfung konfigurieren",
+        "description": "Darf die Signaturprüfung für den Namespace bzw. dem Repository konfigurieren"
+      }
+    }
   }
 }

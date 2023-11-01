@@ -22,20 +22,36 @@
  * SOFTWARE.
  */
 
-package com.cloudogu.scm.signature.check;
+package com.cloudogu.scm.signature.check.config;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import de.otto.edison.hal.HalRepresentation;
+import de.otto.edison.hal.Links;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-@Path("v2/sample")
-class SampleResource {
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
-  @GET
-  @Produces(MediaType.TEXT_PLAIN)
-  public String sample() {
-    return "Sample";
+@EqualsAndHashCode(callSuper = true)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class GlobalSignatureConfigDto extends HalRepresentation {
+  private boolean childrenConfigDisabled;
+  private boolean isEnabled;
+
+  @NotNull
+  private List<@NotNull @NotEmpty String> protectedBranches;
+
+  @NotNull
+  private GpgVerificationType verificationType;
+
+  @Override
+  public HalRepresentation add(Links links) {
+    return super.add(links);
   }
 
 }

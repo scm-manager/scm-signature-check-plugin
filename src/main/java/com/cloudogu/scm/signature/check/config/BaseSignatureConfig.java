@@ -22,28 +22,20 @@
  * SOFTWARE.
  */
 
-import { ConfigurationBinder as cfgBinder } from "@scm-manager/ui-components";
-import GlobalSignatureConfigForm from "./GlobalSignatureConfigForm";
-import RepoSignatureConfigForm from "./RepoSignatureConfigForm";
-import NamespaceSignatureConfigForm from "./NamespaceSignatureConfigForm";
+package com.cloudogu.scm.signature.check.config;
 
-cfgBinder.bindGlobal(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "globalSignatureConfig",
-  GlobalSignatureConfigForm
-);
+import lombok.Data;
 
-cfgBinder.bindRepositorySetting(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "repoSignatureConfig",
-  RepoSignatureConfigForm
-);
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import java.util.ArrayList;
+import java.util.List;
 
-cfgBinder.bindNamespaceSetting(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "namespaceSignatureConfig",
-  NamespaceSignatureConfigForm
-);
+@Data
+@XmlAccessorType(XmlAccessType.FIELD)
+public class BaseSignatureConfig {
+
+  private boolean isEnabled = false;
+  private List<String> protectedBranches = new ArrayList<>();
+  private GpgVerificationType verificationType = GpgVerificationType.ANY_SIGNATURE;
+}

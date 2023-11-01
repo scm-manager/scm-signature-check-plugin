@@ -22,28 +22,14 @@
  * SOFTWARE.
  */
 
-import { ConfigurationBinder as cfgBinder } from "@scm-manager/ui-components";
-import GlobalSignatureConfigForm from "./GlobalSignatureConfigForm";
-import RepoSignatureConfigForm from "./RepoSignatureConfigForm";
-import NamespaceSignatureConfigForm from "./NamespaceSignatureConfigForm";
+package com.cloudogu.scm.signature.check;
 
-cfgBinder.bindGlobal(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "globalSignatureConfig",
-  GlobalSignatureConfigForm
-);
+import sonia.scm.repository.NamespacePermissions;
 
-cfgBinder.bindRepositorySetting(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "repoSignatureConfig",
-  RepoSignatureConfigForm
-);
+public final class SignatureCheckPermissions {
+  private SignatureCheckPermissions() {}
 
-cfgBinder.bindNamespaceSetting(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "namespaceSignatureConfig",
-  NamespaceSignatureConfigForm
-);
+  public static void checkNamespace(String namespace) {
+    NamespacePermissions.custom("signatureCheck", namespace).check();
+  }
+}

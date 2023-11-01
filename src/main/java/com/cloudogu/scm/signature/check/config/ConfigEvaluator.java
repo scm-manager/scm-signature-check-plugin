@@ -22,28 +22,25 @@
  * SOFTWARE.
  */
 
-import { ConfigurationBinder as cfgBinder } from "@scm-manager/ui-components";
-import GlobalSignatureConfigForm from "./GlobalSignatureConfigForm";
-import RepoSignatureConfigForm from "./RepoSignatureConfigForm";
-import NamespaceSignatureConfigForm from "./NamespaceSignatureConfigForm";
+package com.cloudogu.scm.signature.check.config;
 
-cfgBinder.bindGlobal(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "globalSignatureConfig",
-  GlobalSignatureConfigForm
-);
+public class ConfigEvaluator {
 
-cfgBinder.bindRepositorySetting(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "repoSignatureConfig",
-  RepoSignatureConfigForm
-);
+  @SuppressWarnings("unchecked")
+  public <
+    B,
+    G extends WithDisableOption,
+    N extends WithDisableOption & WithOverwriteOption,
+    R extends WithOverwriteOption
+    > B evaluate(G globalConfig, N namespaceConfig, R repoConfig) {
+    if(repoConfig.isOverwriteParentConfig() && !namespaceConfig.isChildrenConfigDisabled() && !globalConfig.isChildrenConfigDisabled()) {
+      return (B) repoConfig;
+    }
 
-cfgBinder.bindNamespaceSetting(
-  "/signature-config",
-  "scm-signature-check-plugin.config.menuTitle",
-  "namespaceSignatureConfig",
-  NamespaceSignatureConfigForm
-);
+    if(namespaceConfig.isOverwriteParentConfig() && !globalConfig.isChildrenConfigDisabled()) {
+      return (B) namespaceConfig;
+    }
+
+    return (B) globalConfig;
+  }
+}

@@ -1,5 +1,52 @@
 {
   "scm-signature-check-plugin": {
-
+    "config": {
+      "menuTitle": "Signature Check",
+      "disableNamespaceAndRepoConfig": "Disable namespace and repository settings",
+      "disableRepoConfig": "Disable repository settings",
+      "overwriteGlobalConfig": "Overwrite global settings",
+      "overwriteNamespaceAndGlobalConfig": "Overwrite namespace and global settings",
+      "enabled": {
+        "label": "Activate signature check"
+      },
+      "protectedBranches": {
+        "label": "Protected branches",
+        "helpText": "The signature of every commit, that gets pushed onto these branches, is verified first. If this list is empty, then the signature gets verified for every branch.",
+        "add": "Add"
+      },
+      "verificationType": {
+        "label": "GPG verification",
+        "helpText": "Different types of allowed signatures. Either every signature gets allowed, only the signature of SCM-Manager users or the signatures belonging to a pre-defined list of gpg keys.",
+        "radio": {
+          "ANY_SIGNATURE": "Any signature",
+          "SCM_USER_SIGNATURE": "SCM user signature"
+        }
+      },
+      "displayName": {
+        "label": "Display name",
+        "helpText": "Display name of the gpg key"
+      },
+      "raw": {
+        "label": "Key",
+        "helpText": "The public gpg key"
+      },
+      "keysSubtitle": "List of allowed GPG Keys"
+    }
+  },
+  "permissions": {
+    "configuration": {
+      "signatureCheck": {
+        "displayName": "Modify signature check configuration",
+        "description": "May configure the signature check globally for every repository"
+      }
+    }
+  },
+  "verbs": {
+    "repository": {
+      "signatureCheck": {
+        "displayName": "configure signature check",
+        "description": "May configure the signature check for a namespace or repository"
+      }
+    }
   }
 }
