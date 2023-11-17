@@ -33,7 +33,7 @@ dependencies {
 }
 
 scmPlugin {
-  scmVersion = "2.47.1-SNAPSHOT"
+  scmVersion = "2.48.0"
   displayName = "Signature Check"
   description = "Plugin to check if all changesets of a push have a valid signature"
 
