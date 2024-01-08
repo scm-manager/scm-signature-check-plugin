@@ -35,9 +35,11 @@
   },
   "permissions": {
     "configuration": {
-      "signatureCheck": {
-        "displayName": "Signaturprüfung konfigurieren",
-        "description": "Darf die globale Signaturprüfung konfigurieren"
+      "read,write": {
+        "signatureCheck": {
+          "displayName": "Signaturprüfung konfigurieren",
+          "description": "Darf die globale Signaturprüfung konfigurieren"
+        }
       }
     }
   },

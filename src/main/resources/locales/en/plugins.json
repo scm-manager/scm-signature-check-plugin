@@ -35,9 +35,11 @@
   },
   "permissions": {
     "configuration": {
-      "signatureCheck": {
-        "displayName": "Modify signature check configuration",
-        "description": "May configure the signature check globally for every repository"
+      "read,write": {
+        "signatureCheck": {
+          "displayName": "Modify signature check configuration",
+          "description": "May configure the signature check globally for every repository"
+        }
       }
     }
   },
