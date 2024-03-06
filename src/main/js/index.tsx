@@ -31,19 +31,22 @@ cfgBinder.bindGlobal(
   "/signature-config",
   "scm-signature-check-plugin.config.menuTitle",
   "globalSignatureConfig",
-  GlobalSignatureConfigForm
+  GlobalSignatureConfigForm,
+  "SignatureCheck"
 );
 
 cfgBinder.bindRepositorySetting(
   "/signature-config",
   "scm-signature-check-plugin.config.menuTitle",
   "repoSignatureConfig",
-  RepoSignatureConfigForm
+  RepoSignatureConfigForm,
+  "SignatureCheck"
 );
 
 cfgBinder.bindNamespaceSetting(
   "/signature-config",
   "scm-signature-check-plugin.config.menuTitle",
   "namespaceSignatureConfig",
-  NamespaceSignatureConfigForm
+  NamespaceSignatureConfigForm,
+  "SignatureCheck"
 );
