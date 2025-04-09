@@ -17,19 +17,22 @@
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { NamespaceSignatureConfigDto } from "./types";
-import { HalRepresentation } from "@scm-manager/ui-types";
+import { HalRepresentation, Namespace } from "@scm-manager/ui-types";
 import { ConfigurationForm, Form } from "@scm-manager/ui-forms";
 import { Subtitle } from "@scm-manager/ui-components";
 import BaseSignatureConfigFormElements from "./BaseSignatureConfigFormElements";
+import { useDocumentTitle } from "@scm-manager/ui-core";
 
 type Props = {
   link: string;
+  namespace: Namespace;
 };
 
 type Configuration = HalRepresentation & NamespaceSignatureConfigDto;
 
-const NamespaceSignatureConfigForm: FC<Props> = ({ link }) => {
+const NamespaceSignatureConfigForm: FC<Props> = ({ link, namespace }) => {
   const [t] = useTranslation("plugins");
+  useDocumentTitle(t("scm-signature-check-plugin.config.menuTitle"), namespace.namespace);
 
   return (
     <>
