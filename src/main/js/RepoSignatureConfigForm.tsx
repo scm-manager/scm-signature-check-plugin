@@ -16,23 +16,21 @@
 
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { Subtitle } from "@scm-manager/ui-components";
-import { HalRepresentation, Repository } from "@scm-manager/ui-types";
-import { RepositorySignatureConfigDto } from "./types";
+import { Subtitle } from "@scm-manager/ui-core";
 import { ConfigurationForm, Form } from "@scm-manager/ui-forms";
+import { HalRepresentation } from "@scm-manager/ui-types";
+import { RepositorySignatureConfigDto } from "./types";
 import BaseSignatureConfigFormElements from "./BaseSignatureConfigFormElements";
-import { useDocumentTitleForRepository } from "@scm-manager/ui-core";
 
 type Props = {
   link: string;
-  repository: Repository;
 };
 
 type Configuration = HalRepresentation & RepositorySignatureConfigDto;
 
-const RepoSignatureConfigForm: FC<Props> = ({ link, repository }) => {
+const RepoSignatureConfigForm: FC<Props> = ({ link }) => {
   const [t] = useTranslation("plugins");
-  useDocumentTitleForRepository(repository, t("scm-signature-check-plugin.config.menuTitle"));
+
   return (
     <>
       <Subtitle>{t("scm-signature-check-plugin.config.menuTitle")}</Subtitle>

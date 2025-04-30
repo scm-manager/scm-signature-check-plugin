@@ -16,11 +16,11 @@
 
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { GlobalSignatureConfigDto } from "./types";
-import { HalRepresentation } from "@scm-manager/ui-types";
+import { Title } from "@scm-manager/ui-core";
 import { ConfigurationForm, Form } from "@scm-manager/ui-forms";
+import { HalRepresentation } from "@scm-manager/ui-types";
+import { GlobalSignatureConfigDto } from "./types";
 import BaseSignatureConfigFormElements from "./BaseSignatureConfigFormElements";
-import { Title, useDocumentTitle } from "@scm-manager/ui-core";
 
 type Props = {
   link: string;
@@ -30,7 +30,6 @@ type Configuration = HalRepresentation & GlobalSignatureConfigDto;
 
 const GlobalSignatureConfigForm: FC<Props> = ({ link }) => {
   const [t] = useTranslation("plugins");
-  useDocumentTitle(t("scm-signature-check-plugin.config.menuTitle"));
 
   return (
     <>
