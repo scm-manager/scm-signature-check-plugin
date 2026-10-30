@@ -19,12 +19,12 @@ import GlobalSignatureConfigForm from "./GlobalSignatureConfigForm";
 import RepoSignatureConfigForm from "./RepoSignatureConfigForm";
 import NamespaceSignatureConfigForm from "./NamespaceSignatureConfigForm";
 
-cfgBinder.bindGlobal(
+cfgBinder.bindAdminSetting(
   "/signature-config",
   "scm-signature-check-plugin.config.menuTitle",
   "globalSignatureConfig",
   GlobalSignatureConfigForm,
-  "SignatureCheck"
+  "SignatureCheck",
 );
 
 cfgBinder.bindRepositorySetting(
@@ -32,7 +32,7 @@ cfgBinder.bindRepositorySetting(
   "scm-signature-check-plugin.config.menuTitle",
   "repoSignatureConfig",
   RepoSignatureConfigForm,
-  "SignatureCheck"
+  "SignatureCheck",
 );
 
 cfgBinder.bindNamespaceSetting(
@@ -40,5 +40,4 @@ cfgBinder.bindNamespaceSetting(
   "scm-signature-check-plugin.config.menuTitle",
   "namespaceSignatureConfig",
   NamespaceSignatureConfigForm,
-  "SignatureCheck"
 );

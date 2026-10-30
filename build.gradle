@@ -19,16 +19,12 @@ plugins {
 }
 
 dependencies {
-  // define dependencies to other plugins here e.g.:
-  // plugin "sonia.scm.plugins:scm-mail-plugin:2.1.0"
-  // optionalPlugin "sonia.scm.plugins:scm-editor-plugin:2.0.0"
 }
 
 scmPlugin {
-  scmVersion = "3.9.0"
+  scmVersion = "4.0.0-SNAPSHOT"
   displayName = "Signature Check"
-  description = "Plugin to check if all changesets of a push have a valid signature"
-
+  description = "Check if all changesets of a push have a valid signature"
   author = "Thomas Zerr"
   category = "Workflow"
 

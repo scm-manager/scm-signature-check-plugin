@@ -4,10 +4,10 @@
   </a>
 </p>
 <h1 align="center">
-  Signature Check
+  Signature Check Plugin
 </h1>
 
-Plugin to check if all changesets of a push have a valid signature
+Check if all changesets of a push have a valid signature.
 
 ## Usage
 

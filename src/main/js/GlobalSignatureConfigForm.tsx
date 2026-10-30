@@ -16,8 +16,7 @@
 
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { Title } from "@scm-manager/ui-core";
-import { ConfigurationForm, Form } from "@scm-manager/ui-forms";
+import { ConfigurationForm, Form, Title } from "@scm-manager/ui-core";
 import { HalRepresentation } from "@scm-manager/ui-types";
 import { GlobalSignatureConfigDto } from "./types";
 import BaseSignatureConfigFormElements from "./BaseSignatureConfigFormElements";

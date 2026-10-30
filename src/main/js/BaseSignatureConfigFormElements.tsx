@@ -14,19 +14,18 @@
  * along with this program. If not, see https://www.gnu.org/licenses/.
  */
 
-import React, { FC, useRef } from "react";
-import { ChipInputField, Form } from "@scm-manager/ui-forms";
-import { Level } from "@scm-manager/ui-components";
-import { BaseSignatureConfigDto, VERIFICATION_TYPES } from "./types";
+import React, { useRef } from "react";
+import { FieldPath, UseFormWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { UseFormWatch } from "react-hook-form";
+import { ChipInputField, Form, Level } from "@scm-manager/ui-core";
 import { HalRepresentation } from "@scm-manager/ui-types";
+import { BaseSignatureConfigDto, VERIFICATION_TYPES } from "./types";
 
-type Props = {
-  watch: UseFormWatch<HalRepresentation & BaseSignatureConfigDto>;
+type Props<T extends HalRepresentation & BaseSignatureConfigDto> = {
+  watch: UseFormWatch<T>;
 };
 
-const BaseSignatureConfigFormElements: FC<Props> = ({ watch }: Props) => {
+const BaseSignatureConfigFormElements = <T extends HalRepresentation & BaseSignatureConfigDto>({ watch }: Props<T>) => {
   const [t] = useTranslation("plugins");
   const protectedBranchesRef = useRef<HTMLInputElement>(null);
 
@@ -35,7 +34,7 @@ const BaseSignatureConfigFormElements: FC<Props> = ({ watch }: Props) => {
       <Form.Row>
         <Form.Checkbox name="enabled" />
       </Form.Row>
-      {watch("enabled") ? (
+      {watch("enabled" as FieldPath<T>) ? (
         <>
           <Form.Row>
             <Form.ChipInput name="protectedBranches" ref={protectedBranchesRef} />
@@ -50,7 +49,7 @@ const BaseSignatureConfigFormElements: FC<Props> = ({ watch }: Props) => {
           <hr />
           <Form.Row>
             <Form.RadioGroup name="verificationType">
-              {VERIFICATION_TYPES.map(value => (
+              {VERIFICATION_TYPES.map((value) => (
                 <Form.RadioGroup.Option key={value} value={value} />
               ))}
             </Form.RadioGroup>

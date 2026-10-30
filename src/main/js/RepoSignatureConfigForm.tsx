@@ -16,20 +16,17 @@
 
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { Subtitle } from "@scm-manager/ui-core";
-import { ConfigurationForm, Form } from "@scm-manager/ui-forms";
-import { HalRepresentation } from "@scm-manager/ui-types";
+import { ConfigurationForm, Form, Subtitle, useRepositoryFromParams } from "@scm-manager/ui-core";
+import { HalRepresentation, Link } from "@scm-manager/ui-types";
 import { RepositorySignatureConfigDto } from "./types";
 import BaseSignatureConfigFormElements from "./BaseSignatureConfigFormElements";
 
-type Props = {
-  link: string;
-};
-
 type Configuration = HalRepresentation & RepositorySignatureConfigDto;
 
-const RepoSignatureConfigForm: FC<Props> = ({ link }) => {
+const RepoSignatureConfigForm: FC = () => {
   const [t] = useTranslation("plugins");
+  const repository = useRepositoryFromParams();
+  const link = (repository._links["repoSignatureConfig"] as Link).href;
 
   return (
     <>

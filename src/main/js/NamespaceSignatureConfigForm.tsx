@@ -16,20 +16,17 @@
 
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { Subtitle } from "@scm-manager/ui-core";
-import { ConfigurationForm, Form } from "@scm-manager/ui-forms";
-import { HalRepresentation } from "@scm-manager/ui-types";
+import { ConfigurationForm, Form, Subtitle, useNamespaceFromParams } from "@scm-manager/ui-core";
+import { HalRepresentation, Link } from "@scm-manager/ui-types";
 import { NamespaceSignatureConfigDto } from "./types";
 import BaseSignatureConfigFormElements from "./BaseSignatureConfigFormElements";
 
-type Props = {
-  link: string;
-};
-
 type Configuration = HalRepresentation & NamespaceSignatureConfigDto;
 
-const NamespaceSignatureConfigForm: FC<Props> = ({ link }) => {
+const NamespaceSignatureConfigForm: FC = () => {
   const [t] = useTranslation("plugins");
+  const namespace = useNamespaceFromParams();
+  const link = (namespace._links["namespaceSignatureConfig"] as Link).href;
 
   return (
     <>
